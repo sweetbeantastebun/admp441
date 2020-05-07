@@ -177,12 +177,12 @@ recording_A()
 while True:
     t16=time.time()
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
-    result_B = executor.submit(recording_B) #recording_Bを実行し、これを変数result_Bとしておく
-    executor.submit(FFT_A) #FFT_Aを実行する(上記と平行)
+    result_B = executor.submit(recording_B()) #recording_Bを実行し、これを変数result_Bとしておく
+    executor.submit(FFT_A()) #FFT_Aを実行する(上記と平行)
     as_completed([result_B]).__next__() #変数result_Bが終了したら、次に進む
     t17 = time.time()
-    result_A = executor.submit(recording_A) #recording_Aを実行し、これを変数result_Aとしておく
-    executor.submit(FFT_B) #FFT_Bを実行する(上記と平行)
+    result_A = executor.submit(recording_A()) #recording_Aを実行し、これを変数result_Aとしておく
+    executor.submit(FFT_B()) #FFT_Bを実行する(上記と平行)
     as_completed([result_A]).__next__() #変数result_Aが終了したら、次に進む
     t18 = time.time()
     print('thread_1',t17-t16)
