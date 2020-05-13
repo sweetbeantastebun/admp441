@@ -185,12 +185,12 @@ while True:
     executor.submit(FFT_B()) #FFT_Bを実行する(上記と平行)
     as_completed([result_A]).__next__() #変数result_Aが終了したら、次に進む
     t18 = time.time()
-    print('thread_1',t17-t16)
-    print('thread_2',t18-t17)
-    print('record_A',t1-t0)
-    print('record_B',t9-t8)
-    print('FFT_A',t7-t2)
-    print('FFT_B',t14-t10)
+    #print('thread_1',t17-t16)
+    #print('thread_2',t18-t17)
+    #print('record_A',t1-t0)
+    #print('record_B',t9-t8)
+    #print('FFT_A',t7-t2)
+    #print('FFT_B',t14-t10)
     #memory使用率を出力
     memory = psutil.virtual_memory()
     print('memory.percent',memory.percent)
