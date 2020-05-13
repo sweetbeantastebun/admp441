@@ -5,8 +5,6 @@ import numpy as np #配列計算、FFT化するライブラリ
 import wave  #wavファイルの読み書きするライブラリ
 import csv  #csvを作成するライブラリ
 import os  #ファイルやディレクトリをパス操作するライブラリ
-import matplotlib
-matplotlib.use('agg')
 import matplotlib.pyplot as plt  #グラフを作成するライブラリ
 #from pydub import AudioSegment  #メディアデータを変換するライブラリ
 from datetime import datetime  #タイムスタンプを実行するライブラリ
