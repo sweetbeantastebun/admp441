@@ -63,12 +63,12 @@ def Analytics_A():
     spectrum_dB_A = db(spectrum_A, 2e-5)
     
     #リファレンスデータの読み込み
-    reffrence_spectrum_filename = '/home/pi/Documents/admp441_data/****'
-    reffrence_spectrum = np.loadtxt(reffrence_spectrum_filename,delimiter=",")
-    reffrence_spectrum_dB = db(reffrence_spectrum, 2e-5)
+    #reffrence_spectrum_filename = '/home/pi/Documents/admp441_data/****'
+    #reffrence_spectrum = np.loadtxt(reffrence_spectrum_filename,delimiter=",")
+    #reffrence_spectrum_dB = db(reffrence_spectrum, 2e-5)
     #print(reffrence_spectrum.read())
-    reffrence_frequency_filename = '/home/pi/Documents/admp441_data/*****'
-    reffrence_frequency = np.loadtxt(reffrence_frequency_filename,delimiter=",")
+    #reffrence_frequency_filename = '/home/pi/Documents/admp441_data/*****'
+    #reffrence_frequency = np.loadtxt(reffrence_frequency_filename,delimiter=",")
     t6 = time.time()
     
     #グラフ準備
@@ -80,23 +80,23 @@ def Analytics_A():
     plt.ion()
     plt.clf()
     plt.subplot(2, 1, 1)
-    #plt.plot(frequency_A, np.abs(spectrum_A))
-    plt.plot(frequency_A, np.abs(spectrum_dB_A))
-    plt.axis([0,fs/2, 10,1000])
+    plt.plot(frequency_A, np.abs(spectrum_A))
+    #plt.plot(frequency_A, np.abs(spectrum_dB_A))
+    plt.axis([0,fs/2, 0,100])
     #plt.xlim(0,fs/2)
     plt.grid(which="both")
-    plt.yscale("log")
+    #plt.yscale("log")
     #plt.xlabel("freqency(Hz)", fontsize=8)
     plt.ylabel("Amplitude Spectrum(dB)", fontsize=8)
     plt.subplot(2, 1, 2)
     plt.plot(frequency_A, np.abs(spectrum_A))
-    plt.plot(reffrence_frequency, reffrence_spectrum)
+    #plt.plot(reffrence_frequency, reffrence_spectrum)
     #plt.plot(frequency_A, np.abs(spectrum_dB_A))
     #plt.plot(reffrence_frequency, reffrence_spectrum_dB)   
-    plt.axis([0,1400, 0.01,1000])
+    plt.axis([0,1400, 0,100])
     #plt.axis([0,1400, 10,1000])
     plt.grid(which="both")
-    plt.yscale("log")
+    #plt.yscale("log")
     plt.xlabel("freqency(Hz)", fontsize=8)
     plt.ylabel("Amplitude Spectrum", fontsize=8)
     #plt.savefig('/home/pi/Documents/admp441_data/'+filename_A+'.png') 
@@ -111,8 +111,8 @@ def Analytics_A():
     #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'frequency', frequency_A, delimiter = " ", fmt='%.2f')
      
     #wavファイル削除
-    #file = filename_A + '.wav'
-    #os.remove(path + file)
+    file = filename_A + '.wav'
+    os.remove(path + file)
 #    #print(path + file, 'deleted')  
     t7 = time.time()
 
