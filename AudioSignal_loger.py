@@ -98,8 +98,8 @@ def Graph_A():
     
     #データをテキストに出力
     #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'audio_signal', audio_signal, delimiter = " ", fmt='%.5f')
-    np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'spectrum', np.abs(spectrum_A), delimiter = " ", fmt='%.5f')
-    np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'frequency', frequency_A, delimiter = " ", fmt='%.2f')
+    #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'spectrum', np.abs(spectrum_A), delimiter = " ", fmt='%.5f')
+    #np.savetxt('/home/pi/Documents/admp441_data/'+filename_A+'frequency', frequency_A, delimiter = " ", fmt='%.2f')
     t7 = time.time()
 
 RMS_A()
