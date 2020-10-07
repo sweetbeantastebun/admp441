@@ -207,34 +207,6 @@ def Recording_B():
     t25 = time.time()
     #print("Recording_B", t25-t20)
 
-def job():
-    plt.clf()
-    plt.subplot(2, 1, 1)
-    No1, = plt.plot(np.arange(0, index_loop), RMS_data, lw=1)
-    plt.xlim(np.arange(0, index_loop)[-Loop_count_Value], np.arange(0, index_loop)[-1])
-    plt.ylim(0, 0.12)
-    #plt.plot(np.arange(0, index_loop), RMS_data, lw=1)
-    #plt.axis([0,index_loop, 0,0.12])
-    plt.xticks(fontsize = 8)
-    plt.yticks(fontsize = 8)
-    plt.xlabel("Sample Number", fontsize=8)
-    plt.ylabel("RMS", fontsize=8)
-    plt.grid(which="both")
-    RMS_data.append(rms_B)
-    RMS_data.pop(0)
-    No1.set_data(np.arange(0, index_loop), RMS_data)
-    plt.subplot(2, 1, 2)
-    plt.plot(frequency_B, np.abs(spectrum_B), lw=1)
-    plt.axis([0,1600, 0,50])
-    plt.xticks(fontsize = 8)
-    plt.yticks(fontsize = 8)
-    plt.grid(which="both")
-    plt.xlabel("freqency(Hz)", fontsize=8)
-    plt.ylabel("Amplitude Spectrum", fontsize=8)
-    plt.subplots_adjust(wspace=0.3, hspace=0.3)  #隣接グラフとの隙間
-    plt.savefig('/home/pi/Documents/admp441_data/'+filename_B+'.png')
-    plt.close()
-
 def Graph_B1():
     global fig1
     global fig2
@@ -320,7 +292,35 @@ def Graph_B1():
     t39 = time.time()
     print("Greph_B", t39-t30)
 
-
+def job():
+    plt.clf()
+    plt.subplot(2, 1, 1)
+    No1, = plt.plot(np.arange(0, index_loop), RMS_data, lw=1)
+    plt.xlim(np.arange(0, index_loop)[-Loop_count_Value], np.arange(0, index_loop)[-1])
+    plt.ylim(0, 0.12)
+    #plt.plot(np.arange(0, index_loop), RMS_data, lw=1)
+    #plt.axis([0,index_loop, 0,0.12])
+    plt.xticks(fontsize = 8)
+    plt.yticks(fontsize = 8)
+    plt.xlabel("Sample Number", fontsize=8)
+    plt.ylabel("RMS", fontsize=8)
+    plt.grid(which="both")
+    RMS_data.append(rms_B)
+    RMS_data.pop(0)
+    No1.set_data(np.arange(0, index_loop), RMS_data)
+    plt.subplot(2, 1, 2)
+    plt.plot(frequency_B, np.abs(spectrum_B), lw=1)
+    plt.axis([0,1600, 0,50])
+    plt.xticks(fontsize = 8)
+    plt.yticks(fontsize = 8)
+    plt.grid(which="both")
+    plt.xlabel("freqency(Hz)", fontsize=8)
+    plt.ylabel("Amplitude Spectrum", fontsize=8)
+    plt.subplots_adjust(wspace=0.3, hspace=0.3)  #隣接グラフとの隙間
+    plt.savefig('/home/pi/Documents/admp441_data/'+filename_B+'.png')
+    plt.close()
+   
+   
 RMS_data = []
 index_loop = 1
 while index_loop <= Loop_count_Value:
