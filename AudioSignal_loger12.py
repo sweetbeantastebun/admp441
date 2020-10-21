@@ -12,11 +12,11 @@ import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor, as_completed  #複数の処理を並列実行するためのライブラリ
 import shutil  #ファイル、ディレクトリの移動、コピーするライブラリ
 import glob  #複数のファイルを選択するライブラリ
-import pandas as  pd
+import pandas as  pd  #数式、配列を操作するライブラリ
 import psutil  #メモリ、CPUの使用率をモニターするライブラリ
 
 #グラフのリアルタイムプロットの更新時間数
-Loop_count_Value = 330
+Loop_count_Value = 950
 
 t00 = time.time()
 path = '/home/pi/Documents/admp441_data/'  #ディレクトリ先を変数pathに格納(データの格納先デレクトリを読み出すときに使用する)
@@ -117,6 +117,7 @@ def Graph_A1():
 
 
 def job():
+    t20 = time.time()
     plt.clf()
     plt.subplot(2, 1, 1)
     No1, = plt.plot(np.arange(0, index_loop), RMS_data, lw=1)
@@ -145,7 +146,7 @@ def job():
     plt.close()
     #波形の個数を数値化
     data_frame = pd.DataFrame(np.abs(spectrum_A), columns=["spectrum"])  #データフレーム作成
-    peeks = (data_frame["spectrum"] >= 0.005).sum()  #0.085以上の検出ピークをカウント
+    peeks = (data_frame["spectrum"] >= 0.085).sum()  #0.085以上の検出ピークをカウント
     #memory,cpu,harddiskの使用率をモニタ
     memory = psutil.virtual_memory()  #memory使用率の出力
     cpu = psutil.cpu_percent(interval = 1)  #cpu使用率を出力
@@ -153,7 +154,7 @@ def job():
     #csvファイルに書き込むフレーム作成
     header_names = [["number_of_peeks",  "memory.percent", "cpu", "disk.percent"],
     [peeks, memory.percent, cpu, disk.percent]]
-     #csv作成
+    #csv作成
     with open("/home/pi/Documents/admp441_data/"+filename_A+"peeks"+".csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerows(header_names)
@@ -166,6 +167,8 @@ def job():
         os.remove(file)
     #print(path + file, 'deleted')
     """
+    t22 = time.time()
+    print("job_A", t22-t20)
 
 
 RMS_data = []
@@ -190,28 +193,5 @@ while True:
     os.remove(path + file)
     index_loop += 1
 
-"""
-index_loop = Loop_count_Value
-while True:
-    t50=time.time()
-    executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
-    result_B = executor.submit(Recording_B()) #recording_Bを実行し、これを変数result_Bとしておく
-    executor.submit(Graph_A1()) #Graph_Aを実行する(上記と平行)
-    as_completed([result_B]).__next__() #変数result_Bが終了したら、次に進む
-    RMS_data.append(rms_B)
-    t51 = time.time()
-    index_loop += 1
-    result_A = executor.submit(Recording_A()) #recording_Aを実行し、これを変数result_Aとしておく
-    executor.submit(Graph_B1()) #Graph_Bを実行する(上記と平行)
-    as_completed([result_A]).__next__() #変数result_Aが終了したら、次に進む
-    RMS_data.append(rms_A)
-    #if i % 10 == 0:
-    #    job()
-    t52 = time.time()
-    index_loop += 1
-    #print('thread_1',t51-t50)
-    #print('thread_2',t52-t51)
-    
-"""
 #except KeyboardInterrupt:
 #print("FINISH!")
