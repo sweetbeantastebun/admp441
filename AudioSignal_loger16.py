@@ -177,7 +177,7 @@ def job_A():
     #print(path + file, "deleted")
     """
     t22 = time.time()
-    print("job_A", t22-t20)
+    #print("job_A", t22-t20)
 
 sample_of_numbers = []
 RMS_data = []
