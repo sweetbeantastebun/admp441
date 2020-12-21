@@ -132,7 +132,7 @@ def Graph_A1():
     if rms_A >= threshold_value_MAX:
         fig1.savefig("/home/pi/Documents/admp441_data/"+filename_A+"Maximum_value"".png")
         file =  filename_A + ".wav"
-        shutil.copy(path + file , path2)
+        shutil.copy(path + file , path2)  #wavファイルをコピーして指定ディレクトリへ移動
         #1サンプル中のMax値
         Maximum_audio_signal_A = np.max(audio_signal_A)
         #1サンプル中の波高率
@@ -147,7 +147,7 @@ def Graph_A1():
     if rms_A <= threshold_value_MIN:
         fig1.savefig("/home/pi/Documents/admp441_data/"+filename_A+"Minimum_value"".png")
         file =  filename_A + ".wav"
-        shutil.copy(path + file , path2)
+        shutil.copy(path + file , path2)  #wavファイルをコピーして指定ディレクトリへ移動
     """
     t19 = time.time()
     #print("Greph_A", t19-t10)
