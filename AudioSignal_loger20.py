@@ -175,7 +175,7 @@ def job_A():
     plt.xlabel("freqency(Hz)", fontsize=8)
     plt.ylabel("Amplitude Spectrum", fontsize=8)
     plt.subplots_adjust(wspace=0.3, hspace=0.3)  #隣接グラフとの隙間
-    plt.savefig("/home/pi/Documents/admp441_data/"+filename_A+"production_routine".png")
+    plt.savefig("/home/pi/Documents/admp441_data/"+filename_A+"production_routine"".png")
     plt.close()
     #print("RMS-List", RMS_data)
     #期間中のMean値
