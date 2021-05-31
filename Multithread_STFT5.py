@@ -433,14 +433,14 @@ while index_loop <= Loop_count_Value2:
     sample_of_numbers.append(index_loop)
     #wavファイル削除
     file_A = filename_A + ".wav"
-    os.remove(path + file_A)
+    os.remove(path_A1 + file_A)
     index_loop += 1
     Recording_B()
     RMS_data.append(rms_B)
     sample_of_numbers.append(index_loop)
     #wavファイル削除
     file_B = filename_A + ".wav"
-    os.remove(path + file_B)
+    os.remove(path_B1 + file_B)
     index_loop += 1
  
 Recording_A()
