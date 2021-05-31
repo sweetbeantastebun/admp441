@@ -289,7 +289,7 @@ def Graph_B():
     #グラフ作成
     plt.ion()
     plt.clf()
-    fig1 = plt.figure(1)
+    #fig1 = plt.figure(1)
     plt.cla()
     plt.subplot(2, 1, 1)
     No1, = plt.plot(sample_of_numbers, RMS_data, lw=1)
