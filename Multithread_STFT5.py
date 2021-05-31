@@ -353,7 +353,7 @@ def Graph_B():
     os.remove(path_B1 + file)
     #print(path_B1 + file, "deleted")
     t39 = time.time()
-    #print("Greph_B", t19-t10)
+    #print("Greph_B", t39-t30)
     
     
     
@@ -439,7 +439,7 @@ while index_loop <= Loop_count_Value2:
     RMS_data.append(rms_B)
     sample_of_numbers.append(index_loop)
     #wavファイル削除
-    file_B = filename_A + ".wav"
+    file_B = filename_B + ".wav"
     os.remove(path_B1 + file_B)
     index_loop += 1
  
@@ -470,7 +470,7 @@ while True:
         job_A()
 
     print('thread_1',t102-t100)
-    print('thread_2',t104-t12)
+    print('thread_2',t104-t102)
     print('Record_A',t6-t0)
     print('Record_B',t26-t20)
     print('Graph_A',t19-t10)
