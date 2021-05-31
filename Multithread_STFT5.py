@@ -49,7 +49,7 @@ def Recording_A():
     timestamp = datetime.today()
     filename_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
     #録音実行（16ビット量子化、44.1kHz）
-    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/"+filename_A+".wav"
+    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data_A/"+filename_A+".wav"
     subprocess.call(record, shell=True)
     t1 = time.time()
     #wavファイルの読み込み
@@ -108,10 +108,10 @@ def Recording_A():
         NN = 8192
         #周波数、時間軸、スペクトル強度を算出する
         freqs_A, times_A, Sx_A = signal.spectrogram(samples_N, fs = fs_A, window = "hanning",
-                                              nperseg = NN,  #nperseg:分割数
-                                              noverlap = NN/8,  #フレームの重なり具合。
-                                              #noverlap = NN/16,  #フレームの重なり具合
-                                              detrend = False, scaling = "spectrum") # スペクトログラム変数
+                                                nperseg = NN,  #nperseg:分割数
+                                                noverlap = NN/8,  #フレームの重なり具合。
+                                                #noverlap = NN/16,  #フレームの重なり具合
+                                                detrend = False, scaling = "spectrum") # スペクトログラム変数
         t6 = time.time()
         #print("signal_spectrogram", t6-t5)
         
@@ -207,7 +207,7 @@ def Recording_B():
     timestamp = datetime.today()
     filename_B = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
     #録音実行（16ビット量子化、44.1kHz）
-    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/"+filename_B+".wav"
+    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data_B/"+filename_B+".wav"
     subprocess.call(record, shell=True)
     t21 = time.time()
     #wavファイルの読み込み
@@ -266,10 +266,10 @@ def Recording_B():
         NN = 8192
         #周波数、時間軸、スペクトル強度を算出する
         freqs_B, times_B, Sx_B = signal.spectrogram(samples_N, fs = fs_B, window = "hanning",
-                                              nperseg = NN,  #nperseg:分割数
-                                              noverlap = NN/8,  #フレームの重なり具合。
-                                              #noverlap = NN/16,  #フレームの重なり具合
-                                              detrend = False, scaling = "spectrum") # スペクトログラム変数
+                                                nperseg = NN,  #nperseg:分割数
+                                                noverlap = NN/8,  #フレームの重なり具合。
+                                                #noverlap = NN/16,  #フレームの重なり具合
+                                                detrend = False, scaling = "spectrum") # スペクトログラム変数
         t26 = time.time()
         #print("signal_spectrogram", t6-t5)
         
