@@ -406,7 +406,7 @@ def job_A():
     cpu = psutil.cpu_percent(interval = 1)  #cpu使用率を出力
     disk = psutil.disk_usage("/")  #disk容量
     #csvファイルに書き込むフレーム作成
-    header_names = [[Maximum_value", "Minimum_value", "Average_value", "number_of_peeks", "memory.percent", "cpu", "disk.percent"],
+    header_names = [["Maximum_value", "Minimum_value", "Average_value", "number_of_peeks", "memory.percent", "cpu", "disk.percent"],
     [round(Maximum_value,4), round(Minimum_value,4), round(Average_value,4), peeks, memory.percent, cpu, disk.percent]]
     #csv作成
     with open("/home/pi/Documents/admp441_data/"+filename_A+"cron"+".csv", "w", newline="", encoding="utf-8") as f:
