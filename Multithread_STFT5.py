@@ -198,7 +198,7 @@ def Graph_A():
     #print("Greph_A", t19-t10)
 
 
- def Recording_B():
+def Recording_B():
     global t20
     global t21
     t20 = time.time()
