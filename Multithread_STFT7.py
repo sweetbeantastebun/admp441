@@ -21,10 +21,10 @@ import pandas as  pd  #数式、配列を操作するライブラリ
 import psutil  #メモリ、CPUの使用率をモニターするライブラリ
 
 #グラフのリアルタイムプロットの更新時間数
-Loop_count_Value1 = 250
+Loop_count_Value1 = 249
 Loop_count_Value2 = 1000
 #しきい値を指定
-threshold_value_MAX = 0.013
+threshold_value_MAX = 0.017
 threshold_value_MIN = 0.009
 #FFT検出強度のフィルタリング
 noise_reduction_filters = 0
@@ -144,20 +144,9 @@ def Graph_A():
     plt.xlim(sample_of_numbers[-Loop_count_Value1], sample_of_numbers[-1])
     #plt.ylim(0, 0.15)
     plt.ylim(0, 0.05)
-    #print("RMS_data", RMS_data)
-    #print("RMS_data", len(RMS_data))
-    #print("index_loop", index_loop)
+    
     plt.subplot(2, 1, 2)
-    """
-    plt.plot(frequency_A, np.abs(spectrum_A), lw=1)
-    plt.axis([0,1600, 0,50])
-    plt.xticks(fontsize = 8)
-    plt.yticks(fontsize = 8)
-    plt.grid(which="both")
-    plt.xlabel("freqency(Hz)", fontsize=8)
-    plt.ylabel("Amplitude Spectrum", fontsize=8)
-    """
-    plt.pcolormesh(times_A, freqs_A, np.log10(Sx_A), cmap='jet', vmin=vmin, vmax=vmax)
+    plt.pcolormesh(times_A, freqs_A, np.log10(Sx_A), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
     #plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap="jet")
     plt.ylim([0, fs_A/2])
     plt.ylabel("Frequency[Hz]", fontsize= 8)
@@ -302,20 +291,9 @@ def Graph_B():
     plt.xlim(sample_of_numbers[-Loop_count_Value1], sample_of_numbers[-1])
     #plt.ylim(0, 0.15)
     plt.ylim(0, 0.05)
-    #print("RMS_data", RMS_data)
-    #print("RMS_data", len(RMS_data))
-    #print("index_loop", index_loop)
+    
     plt.subplot(2, 1, 2)
-    """
-    plt.plot(frequency_B, np.abs(spectrum_B), lw=1)
-    plt.axis([0,1600, 0,50])
-    plt.xticks(fontsize = 8)
-    plt.yticks(fontsize = 8)
-    plt.grid(which="both")
-    plt.xlabel("freqency(Hz)", fontsize=8)
-    plt.ylabel("Amplitude Spectrum", fontsize=8)
-    """
-    plt.pcolormesh(times_B, freqs_B, np.log10(Sx_B), cmap='jet', vmin=vmin, vmax=vmax)
+    plt.pcolormesh(times_B, freqs_B, np.log10(Sx_B), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
     #plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap="jet")
     plt.ylim([0, fs_B/2])
     plt.ylabel("Frequency[Hz]", fontsize= 8)
@@ -398,6 +376,8 @@ def job_A():
     Minimum_value = np.min(RMS_data)
     #期間中のMean値
     Average_value = np.mean(RMS_data)
+    #期間中のRMS値の波高率
+    Wave_height_rate_RMS = Maximum_value / Average_value
     #波形の個数を数値化処理
     data_frame = pd.DataFrame(RMS_data, columns=["spectrum"])  #データフレーム作成
     peeks = (data_frame["spectrum"] >= threshold_value_MAX).sum()  #しきい値以上のピーク検体数をカウント
@@ -406,24 +386,16 @@ def job_A():
     cpu = psutil.cpu_percent(interval = 1)  #cpu使用率を出力
     disk = psutil.disk_usage("/")  #disk容量
     #csvファイルに書き込むフレーム作成
-    header_names = [["Maximum_value", "Minimum_value", "Average_value", "number_of_peeks", "memory.percent", "cpu", "disk.percent"],
-    [round(Maximum_value,4), round(Minimum_value,4), round(Average_value,4), peeks, memory.percent, cpu, disk.percent]]
+    header_names = [["Maximum_value", "Minimum_value", "Average_value", "Wave_height_rate", "number_of_peeks", "memory.percent", "cpu", "disk.percent"],
+    [round(Maximum_value,4), round(Minimum_value,4), round(Average_value,4), round(Wave_height_rate_RMS,4), peeks, memory.percent, cpu, disk.percent]]
     #csv作成
     with open("/home/pi/Documents/admp441_data/"+filename_A+"cron"+".csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerows(header_names)
-    """
-    #wavファイル削除
-    #file = filename_A + ".wav"
-    #os.remove(path + file)
-    file_list = glob.glob(path + "*.wav")
-    for file in file_list:
-        os.remove(file)
-    #print(path + file, "deleted")
-    """
+        writer.writerows(header_names) 
     t42 = time.time()
     #print("job_A", t42-t40)
 
+    
 sample_of_numbers = []
 RMS_data = []
 index_loop = 1
@@ -468,13 +440,14 @@ while True:
     #定期実行処理
     if index_loop % Loop_count_Value2 == 0:
         job_A()
-
+    """
     print('thread_1',t102-t100)
     print('thread_2',t104-t102)
     print('Record_A',t6-t0)
     print('Record_B',t26-t20)
     print('Graph_A',t19-t10)
     print('Graph_B',t39-t30)
+    """
     """
     #memory使用率を出力
     memory = psutil.virtual_memory()
