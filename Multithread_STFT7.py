@@ -394,7 +394,7 @@ def job_A():
         writer.writerows(header_names) 
     
     #録音実行（16ビット量子化、44.1kHz）
-    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data_A/"+filename_A+".wav"
+    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/"+filename_A+".wav"
     subprocess.call(record, shell=True)
     
     t42 = time.time()
