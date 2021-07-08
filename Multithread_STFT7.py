@@ -113,7 +113,7 @@ def Recording_A():
                                                 #noverlap = NN/16,  #フレームの重なり具合
                                                 detrend = False, scaling = "spectrum") # スペクトログラム変数
         t6 = time.time()
-        #print("signal_spectrogram", t6-t5)
+    #print("signal_spectrogram", t6-t5)
         
         
 def Graph_A():
@@ -260,7 +260,7 @@ def Recording_B():
                                                 #noverlap = NN/16,  #フレームの重なり具合
                                                 detrend = False, scaling = "spectrum") # スペクトログラム変数
         t26 = time.time()
-        #print("signal_spectrogram", t6-t5)
+    #print("signal_spectrogram", t26-t20)
         
         
 def Graph_B():
@@ -392,6 +392,11 @@ def job_A():
     with open("/home/pi/Documents/admp441_data/"+filename_A+"cron"+".csv", "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerows(header_names) 
+    
+    #録音実行（16ビット量子化、44.1kHz）
+    record = "arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data_A/"+filename_A+".wav"
+    subprocess.call(record, shell=True)
+    
     t42 = time.time()
     #print("job_A", t42-t40)
 
