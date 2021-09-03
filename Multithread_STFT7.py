@@ -29,8 +29,8 @@ threshold_value_MIN = 0.009
 #FFT検出強度のフィルタリング
 noise_reduction_filters = 0
 #カラーバーのレンジ指定
-vmin = -10
-vmax = 10
+vmin = -6
+vmax = 6
 
 t00 = time.time()
 #ディレクトリ先を変数pathに格納(データの格納先デレクトリを読み出すときに使用する)
@@ -173,11 +173,12 @@ def Graph_A():
         with open("/home/pi/Documents/admp441_data/"+filename_A+"MAX_value"+".csv", "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows(header_names)
-    
+    """
     if rms_A <= threshold_value_MIN:
         plt.savefig("/home/pi/Documents/admp441_data/"+filename_A+"MIN_value"".png")
         file =  filename_A + ".wav"
         shutil.copy(path_A1 + file , path_A2)  #wavファイルをコピーして指定ディレクトリへ移動
+    """
     t18 = time.time()
     #wavファイル削除
     file = filename_A + ".wav"
@@ -320,11 +321,12 @@ def Graph_B():
         with open("/home/pi/Documents/admp441_data/"+filename_B+"MAX_value"+".csv", "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows(header_names)
-    
+    """
     if rms_B <= threshold_value_MIN:
         plt.savefig("/home/pi/Documents/admp441_data/"+filename_B+"MIN_value"".png")
         file =  filename_B + ".wav"
         shutil.copy(path_B1 + file , path_B2)  #wavファイルをコピーして指定ディレクトリへ移動
+    """
     t38 = time.time()
     #wavファイル削除
     file = filename_B + ".wav"
@@ -338,7 +340,7 @@ def Graph_B():
 def job_A():
     t40 = time.time()
     plt.clf()
-    plt.subplot(2, 1, 1)
+    #plt.subplot(2, 1, 1)
     No1, = plt.plot(sample_of_numbers, RMS_data, lw=1)
     plt.xlim(sample_of_numbers[-Loop_count_Value2], sample_of_numbers[-1])
     #plt.ylim(0, 0.15)
@@ -349,6 +351,7 @@ def job_A():
     plt.ylabel("RMS", fontsize=8)
     plt.grid(which="both")
     No1.set_data(sample_of_numbers, RMS_data)
+    """
     plt.subplot(2, 1, 2)
     plt.plot(frequency_A, np.abs(spectrum_A), lw=1)
     plt.axis([0,1600, 0,50])
@@ -357,6 +360,7 @@ def job_A():
     plt.grid(which="both")
     plt.xlabel("freqency(Hz)", fontsize=8)
     plt.ylabel("Amplitude Spectrum", fontsize=8)
+    """
     """
     plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax)
     #plt.pcolormesh(times, freqs, 10* np.log(Sx), cmap="jet")
