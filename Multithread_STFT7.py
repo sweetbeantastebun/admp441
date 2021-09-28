@@ -73,8 +73,8 @@ def Recording_A():
     fs_A = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
     samples = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
     samples_N = np.frombuffer(samples, dtype="int16")
-    samples = np.frombuffer(samples, dtype="int16")  / float((np.power(2, 16) / 2) - 1)  #符号付き整数型16ビットに正規化した配列へ変換する
-    audio_data_length = np.arange(0, len(samples))/float(fs_A) # 音声データの長さ(x軸)
+    samples = np.frombuffer(samples, dtype="int16") / float((np.power(2, 16) / 2) - 1)  #符号付き整数型16ビットに正規化した配列へ変換する
+    audio_data_length = np.arange(0, len(samples)) / float(fs_A) # 音声データの長さ(x軸)
     wr.close()  #読み込み終了。ファイルオブジェクトの終了。 
     t3 = time.time()
     #samplesを変数audio_signalとしてコピー
@@ -221,8 +221,8 @@ def Recording_B():
     fs_B = wr.getframerate()  #サンプリング周波数。Wave_readのメソッド（=処理）
     samples = wr.readframes(wr.getnframes())  #オーディオフレーム数を読み込み。Wave_readのメソッド（=処理）
     samples_N = np.frombuffer(samples, dtype="int16")
-    samples = np.frombuffer(samples, dtype="int16")  / float((np.power(2, 16) / 2) - 1)  #符号付き整数型16ビットに正規化した配列へ変換する
-    audio_data_length = np.arange(0, len(samples))/float(fs_B) # 音声データの長さ(x軸)
+    samples = np.frombuffer(samples, dtype="int16") / float((np.power(2, 16) / 2) - 1)  #符号付き整数型16ビットに正規化した配列へ変換する
+    audio_data_length = np.arange(0, len(samples)) / float(fs_B) # 音声データの長さ(x軸)
     wr.close()  #読み込み終了。ファイルオブジェクトの終了。 
     t23 = time.time()
     #samplesを変数audio_signalとしてコピー
