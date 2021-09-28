@@ -258,8 +258,8 @@ def Recording_B():
         #フィルタリング機能
         spectrum_B[(spectrum_B < noise_reduction_filters)] = 0  #しきい値未満の振幅はゼロにする
         #グラフ準備
-        spectrum_B = spectrum_B[:int(spectrum_A.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
-        frequency_B = frequency_B[:int(frequency_A.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除    
+        spectrum_B = spectrum_B[:int(spectrum_B.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
+        frequency_B = frequency_B[:int(frequency_B.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除    
         t25 = time.time()
         #print("Recording_B", t5-t0)
         """STFT"""
