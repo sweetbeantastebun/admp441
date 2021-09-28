@@ -250,7 +250,7 @@ def Recording_B():
         spectrum_B = spectrum_B[:int(spectrum_A.shape[0]/2)]    #スペクトルがマイナスになるスペクトル要素の削除
         frequency_B = frequency_B[:int(frequency_A.shape[0]/2)]    #周波数がマイナスになる周波数要素の削除    
         t25 = time.time()
-        #print("Recording_B", t5-t0)
+        #print("Recording_B", t25-t20)
         """STFT"""
         #フレーム数の指定
         NN = 8192
