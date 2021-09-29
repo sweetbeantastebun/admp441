@@ -435,12 +435,12 @@ index_loop = Loop_count_Value1 + 1
 while True:
     t100 = time.time()
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=4)
-    result_B = executor.submit(Recording_B) #recording_Bを実行し、これを変数result_Bとしておく
+    result_B = executor.submit(Recording_B()) #recording_Bを実行し、これを変数result_Bとしておく
     executor.submit(Graph_A()) #FFT_Aを実行する(上記と平行)
     as_completed([result_B]).__next__() #変数result_Bが終了したら、次に進む
     index_loop += 1
     t102 = time.time()
-    result_A = executor.submit(Recording_A) #recording_Aを実行し、これを変数result_Aとしておく
+    result_A = executor.submit(Recording_A()) #recording_Aを実行し、これを変数result_Aとしておく
     executor.submit(Graph_B()) #FFT_Bを実行する(上記と平行)
     as_completed([result_A]).__next__() #変数result_Aが終了したら、次に進む
     index_loop += 1
