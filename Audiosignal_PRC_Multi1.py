@@ -16,7 +16,7 @@ import pandas as  pd  #数式、配列を操作するライブラリ
 import psutil  #メモリ、CPUの使用率をモニターするライブラリ
 
 #グラフのリアルタイムプロットの更新時間数
-Loop_count_Value1 = 59
+Loop_count_Value1 = 49
 Loop_count_Value2 = 1000
 #しきい値を指定
 threshold_value_MAX = 0.097
