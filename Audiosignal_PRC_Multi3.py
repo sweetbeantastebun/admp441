@@ -97,7 +97,7 @@ def Graph_A():
     t11 = time.time()
     
     if rms_A >= threshold_value_MAX:
-        plt.savefig("/home/pi/Documents/admp441_data_A/"+filename_A+"Maximum_value"".png")
+        plt.savefig("/home/pi/Documents/admp441_data_A/"+filename_A+"MAX_value"".png")
         file =  filename_A + ".wav"
         shutil.copy(path_A1 + file , path_A2)  #wavファイルをコピーして指定ディレクトリへ移動
         #1サンプル中のMax値
@@ -108,12 +108,12 @@ def Graph_A():
         header_names = [["Maximum_value", "Wave_height_rate", "RMS"],
         [round(Maximum_audio_signal_A,4), round(Wave_height_rate_A,4), round(rms_A,4)]]
         #csv作成
-        with open("/home/pi/Documents/admp441_data_A/"+filename_A+"Maximum_value"+".csv", "w", newline="", encoding="utf-8") as f:
+        with open("/home/pi/Documents/admp441_data_A/"+filename_A+"MAX"+".csv", "w", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows(header_names)
     """
     if rms_A <= threshold_value_MIN:
-        plt.savefig("/home/pi/Documents/admp441_data_A/"+filename_A+"Minimum_value"".png")
+        plt.savefig("/home/pi/Documents/admp441_data_A/"+filename_A+"MIN_value"".png")
         file =  filename_A + ".wav"
         shutil.copy(path_A1 + file , path_A2)  #wavファイルをコピーして指定ディレクトリへ移動
     """
