@@ -36,7 +36,7 @@ def Matching_FS():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t1 = time.time()
     global t2
     global t3
@@ -74,7 +74,7 @@ def Matching_1000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t11 = time.time()
     global t12
     global t13
@@ -111,7 +111,7 @@ def Matching_4000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t21 = time.time()
     global t22
     global t23
@@ -148,7 +148,7 @@ def Matching_8000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t31 = time.time()
     global t32
     global t33
@@ -185,7 +185,7 @@ def Matching_12000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t41 = time.time()
     global t42
     global t43
@@ -222,7 +222,7 @@ def Matching_16000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t51 = time.time()
     global t52
     global t53
@@ -259,7 +259,7 @@ def Matching_20000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
     t61 = time.time()
     global t62
     global t63
