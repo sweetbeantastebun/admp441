@@ -35,7 +35,7 @@ def Recording_A():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    filename_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second) + "." + str(timestamp.microsecond)
+    filename_A = timestamp.strftime("%Y%m%d%H%M%S")
     #録音実行（16ビット量子化、44.1kHz）
     record = 'arecord -d 1 -f S16_LE -r 44100 /home/pi/Documents/admp441_data/'+filename_A+'.wav'
     subprocess.call(record, shell=True)
