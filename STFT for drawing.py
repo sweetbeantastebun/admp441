@@ -42,7 +42,7 @@ def Drawing():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    filename_A = str(timestamp.year) + str(timestamp.month) + str(timestamp.day) + "_" + str(timestamp.hour) + ":" + str(timestamp.minute) + ":" + str(timestamp.second)
+    filename_A = timestamp.strftime("%Y%m%d%H%M%S")
     t1 = time.time()
     #wavファイルの読み込み
     global t2
