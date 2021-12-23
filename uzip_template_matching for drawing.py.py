@@ -3,7 +3,7 @@
 圧縮ファイルを解凍
 ディレクトリ内の複数wavファイルを一括で処理
 短時間フーリエ変換(stft)、図を出力
-FFT図の類似度を算出
+FFTの類似度を算出
 """
 import time  #タイムカウントに使用するライブラリ
 import subprocess  #Terminalを実行するライブラリ
@@ -54,9 +54,9 @@ def Unzip():
     """wavファイルからデータ解析"""
     t0 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    filename_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t1 = time.time()
     #wavファイルの読み込み
     global wavfile_A
@@ -169,7 +169,7 @@ def Unzip():
                 RESULT1000 = [os.path.basename(TEMP_File1000),round(max_value1000,4)]
         
                 #csv
-                with open(path + filename_A + "_1000Hz" + ".csv", "a", newline="", encoding="utf-8") as f1000:
+                with open(path + timename+ "_1000Hz" + ".csv", "a", newline="", encoding="utf-8") as f1000:
                     writer = csv.writer(f1000)
                     writer.writerows([RESULT1000])
                 #pngファイル削除
@@ -209,7 +209,7 @@ def Unzip():
                 RESULT4000 = [os.path.basename(TEMP_File4000),round(max_value4000,4)]
         
                 #csv
-                with open(path + filename_A + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f4000:
+                with open(path + timename + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f4000:
                     writer = csv.writer(f4000)
                     writer.writerows([RESULT4000])
                 #pngファイル削除
@@ -249,7 +249,7 @@ def Unzip():
                 RESULT8000 = [os.path.basename(TEMP_File8000),round(max_value8000,4)]
         
                 #csv
-                with open(path + filename_A + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f8000:
+                with open(path + timename + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f8000:
                     writer = csv.writer(f8000)
                     writer.writerows([RESULT8000])
                 #pngファイル削除
@@ -288,7 +288,7 @@ def Unzip():
                 RESULT12000 = [os.path.basename(TEMP_File12000),round(max_value12000,4)]
         
                 #csv
-                with open(path + filename_A + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f12000:
+                with open(path + timename + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f12000:
                     writer = csv.writer(f12000)
                     writer.writerows([RESULT12000])
                 #pngファイル削除
@@ -327,7 +327,7 @@ def Unzip():
                 RESULT16000 = [os.path.basename(TEMP_File16000),round(max_value16000,4)]
         
                 #csv
-                with open(path + filename_A + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f16000:
+                with open(path + timename + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f16000:
                     writer = csv.writer(f16000)
                     writer.writerows([RESULT16000])
                 #pngファイル削除
@@ -366,7 +366,7 @@ def Unzip():
                 RESULT20000 = [os.path.basename(TEMP_File20000),round(max_value20000,4)]
         
                 #csv
-                with open(path + filename_A + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f20000:
+                with open(path + timename + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f20000:
                     writer = csv.writer(f20000)
                     writer.writerows([RESULT20000])
                 #pngファイル削除
@@ -376,7 +376,7 @@ def Unzip():
             #ファイル名、類似度を格納
             RESULT = [os.path.basename(wavfile_A),round(rms_A,3)]
             #csv
-            with open(path + filename_A + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
+            with open(path + timename + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
                 writer.writerows([RESULT])
             t70 = time.time()
@@ -384,7 +384,7 @@ def Unzip():
     for audiofile in natsorted(File_List):
         os.remove(audiofile)
     t71 = time.time()
-    print("finish "+filename_A)
+    print("finish "+timename)
 
 
 #関数の読み出しコマンド
