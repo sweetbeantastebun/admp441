@@ -1,7 +1,7 @@
 #coding:utf-8
 """
 ディレクトリ内の複数wavファイルを一括で処理
-短時間フーリエ変換(stft)、図を出力
+短時間フーリエ変換(stft)、.pngを出力
 """
 import time  #タイムカウントに使用するライブラリ
 import subprocess  #Terminalを実行するライブラリ
