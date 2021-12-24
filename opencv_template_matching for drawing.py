@@ -55,7 +55,7 @@ def Matching_FS():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         #header = ["data", "TM_value"]
         #csv
         with open(path + csvFileName_A + "_FS" + ".csv", "a", newline="", encoding="utf-8") as f:
@@ -93,7 +93,7 @@ def Matching_1000Hz():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
         with open(path + csvFileName_A + "_1000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
@@ -130,7 +130,7 @@ def Matching_4000Hz():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
         with open(path + csvFileName_A + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
@@ -167,7 +167,7 @@ def Matching_8000Hz():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
         with open(path + csvFileName_A + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
@@ -204,7 +204,7 @@ def Matching_12000Hz():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
         with open(path + csvFileName_A + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
@@ -241,7 +241,7 @@ def Matching_16000Hz():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
         with open(path + csvFileName_A + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
@@ -278,7 +278,7 @@ def Matching_20000Hz():
         #最小値、最大値、座標を取得
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
-        RESULT = [os.path.basename(TEMP_File),round(max_value,4)]
+        RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
         with open(path + csvFileName_A + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
