@@ -10,7 +10,7 @@ import os  #ファイルやディレクトリをパス操作するライブラ�
 import shutil  #ファイル、ディレクトリの移動、コピーするライブラリ
 import glob  #複数のファイルを選択するライブラリ
 from natsort import natsorted  #数字の順番に並べ替えるライブラリ（自然順アルゴリズム）
-import schedule
+import schedule  #定期実行ライブラリ
 
 #サーバー情報
 host = "10.103.193.124"  #リモート側のIPアドレスを入力すること
