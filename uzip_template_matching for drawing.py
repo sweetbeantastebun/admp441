@@ -400,7 +400,7 @@ def Unzip():
                 t61 = time.time()
                 
             #ファイル名、類似度を格納
-            RESULT = [os.path.basename(os.path.basename(wavfile_A))[0],round(rms_A,3)]
+            RESULT = [os.path.splitext(os.path.basename(wavfile_A))[0],round(rms_A,3)]
             #csv
             with open(path + timename + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
@@ -415,8 +415,8 @@ def Unzip():
 
 #関数の読み出しコマンド
 #schedule.every().day.at("00:00").do(Unzip)
-schedule.every(1).minutes.do(Unzip)
-#schedule.every(1).hour.do(Unzip)
+#schedule.every(1).minutes.do(Unzip)
+schedule.every(1).hour.do(Unzip)
 
 while True:
     #定期実行の読み出し
