@@ -4,6 +4,7 @@
 ディレクトリ内の複数wavファイルを一括で処理
 短時間フーリエ変換(stft)、図を出力
 FFTの類似度を算出
+RMS算出
 """
 import time  #タイムカウントに使用するライブラリ
 import subprocess  #Terminalを実行するライブラリ
@@ -136,6 +137,31 @@ def Unzip():
             plt.close()
             shutil.move(out_path_FS, path_FS)
             t8 = time.time()
+            """画像の読み込み"""
+            #デフォルト画像の読み込み
+            img_DFT = cv2.imread(path_FS + "/ReferenceData/" + "NT43_pump1_20210114.png")  #".png"の中にリファレンスのファイル名を入力
+            #テンプレート画像の読み込み
+            Template_File = glob.glob(path_FS + "*.png")
+            for TEMP_File in natsorted(Template_File):
+                img_TEMP = cv2.imread(TEMP_File)
+                #テンプレートマッチングNCC（Normalized Cross Correlation正規化相互相関係数）
+                method =cv2.TM_CCOEFF_NORMED
+                #テンプレートマッチング算出
+                result = cv2.matchTemplate(img_TEMP, img_DFT, cv2.TM_CCOEFF_NORMED)
+                #最小値、最大値、座標を取得
+                min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
+                #ファイル名、類似度を格納
+                RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
+                #header = ["data", "TM_value"]
+                
+                #csv
+                with open(path + timename + "_FS" + ".csv", "a", newline="", encoding="utf-8") as f:
+                    writer = csv.writer(f)
+                    #writer.writerow(header)
+                    writer.writerows([RESULT])
+                #pngファイル削除
+                os.remove(TEMP_File)
+                t9 = time.time()
             
             """1000Hz"""
             plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
@@ -151,7 +177,7 @@ def Unzip():
             plt.savefig(out_path_1000Hz)
             plt.close()
             shutil.move(out_path_1000Hz, path1000Hz)
-            t9 = time.time()
+            t10 = time.time()
             """画像の読み込み"""
             #デフォルト画像の読み込み
             img_DFT1000 = cv2.imread(path1000Hz + "/ReferenceData/" + "NT43_pump1_20210114_1000Hz.png")  #".png"の中にリファレンスのファイル名を入力
@@ -166,7 +192,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value1000, max_value1000, min_loc1000, max_loc1000 = cv2.minMaxLoc(result1000)
                 #ファイル名、類似度を格納
-                RESULT1000 = [os.path.basename(TEMP_File1000),round(max_value1000,4)]
+                RESULT1000 = [os.path.splitext(os.path.basename(TEMP_File1000))[0],round(max_value1000,4)]
         
                 #csv
                 with open(path + timename+ "_1000Hz" + ".csv", "a", newline="", encoding="utf-8") as f1000:
@@ -174,7 +200,7 @@ def Unzip():
                     writer.writerows([RESULT1000])
                 #pngファイル削除
                 os.remove(TEMP_File1000)
-                t10 = time.time()
+                t11 = time.time()
             
             
             """4000Hz"""
@@ -206,7 +232,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value4000, max_value4000, min_loc4000, max_loc4000 = cv2.minMaxLoc(result4000)
                 #ファイル名、類似度を格納
-                RESULT4000 = [os.path.basename(TEMP_File4000),round(max_value4000,4)]
+                RESULT4000 = [os.path.basename(os.path.basename(TEMP_File4000))[0],round(max_value4000,4)]
         
                 #csv
                 with open(path + timename + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f4000:
@@ -246,7 +272,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value8000, max_value8000, min_loc8000, max_loc8000 = cv2.minMaxLoc(result8000)
                 #ファイル名、類似度を格納
-                RESULT8000 = [os.path.basename(TEMP_File8000),round(max_value8000,4)]
+                RESULT8000 = [os.path.basename(os.path.basename(TEMP_File8000))[0],round(max_value8000,4)]
         
                 #csv
                 with open(path + timename + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f8000:
@@ -285,7 +311,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value12000, max_value12000, min_loc12000, max_loc12000 = cv2.minMaxLoc(result12000)
                 #ファイル名、類似度を格納
-                RESULT12000 = [os.path.basename(TEMP_File12000),round(max_value12000,4)]
+                RESULT12000 = [os.path.basename(os.path.basename(TEMP_File12000))[0],round(max_value12000,4)]
         
                 #csv
                 with open(path + timename + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f12000:
@@ -324,7 +350,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value16000, max_value16000, min_loc16000, max_loc16000 = cv2.minMaxLoc(result16000)
                 #ファイル名、類似度を格納
-                RESULT16000 = [os.path.basename(TEMP_File16000),round(max_value16000,4)]
+                RESULT16000 = [os.path.basename(os.path.basename(TEMP_File16000))[0],round(max_value16000,4)]
         
                 #csv
                 with open(path + timename + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f16000:
@@ -363,7 +389,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value20000, max_value20000, min_loc20000, max_loc20000 = cv2.minMaxLoc(result20000)
                 #ファイル名、類似度を格納
-                RESULT20000 = [os.path.basename(TEMP_File20000),round(max_value20000,4)]
+                RESULT20000 = [os.path.basename(os.path.basename(TEMP_File20000))[0],round(max_value20000,4)]
         
                 #csv
                 with open(path + timename + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f20000:
@@ -374,7 +400,7 @@ def Unzip():
                 t61 = time.time()
                 
             #ファイル名、類似度を格納
-            RESULT = [os.path.basename(wavfile_A),round(rms_A,3)]
+            RESULT = [os.path.basename(os.path.basename(wavfile_A))[0],round(rms_A,3)]
             #csv
             with open(path + timename + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
