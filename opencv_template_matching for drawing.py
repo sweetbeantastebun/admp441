@@ -34,9 +34,9 @@ def Matching_FS():
     global t1
     t0 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t1 = time.time()
     global t2
     global t3
@@ -58,7 +58,7 @@ def Matching_FS():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         #header = ["data", "TM_value"]
         #csv
-        with open(path + csvFileName_A + "_FS" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + timename + "_FS" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             #writer.writerow(header)
             writer.writerows([RESULT])
@@ -72,9 +72,9 @@ def Matching_1000Hz():
     global t11
     t10 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t11 = time.time()
     global t12
     global t13
@@ -96,7 +96,7 @@ def Matching_1000Hz():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
-        with open(path + csvFileName_A + "_1000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + timename + "_1000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
         #pngファイル削除
@@ -109,9 +109,9 @@ def Matching_4000Hz():
     global t21
     t20 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t21 = time.time()
     global t22
     global t23
@@ -133,7 +133,7 @@ def Matching_4000Hz():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
-        with open(path + csvFileName_A + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + timename + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
         #pngファイル削除
@@ -146,9 +146,9 @@ def Matching_8000Hz():
     global t31
     t30 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t31 = time.time()
     global t32
     global t33
@@ -170,7 +170,7 @@ def Matching_8000Hz():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
-        with open(path + csvFileName_A + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + timename + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
         #pngファイル削除
@@ -183,9 +183,9 @@ def Matching_12000Hz():
     global t41
     t40 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t41 = time.time()
     global t42
     global t43
@@ -207,7 +207,7 @@ def Matching_12000Hz():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
-        with open(path + csvFileName_A + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + timename + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
         #pngファイル削除
@@ -220,9 +220,9 @@ def Matching_16000Hz():
     global t51
     t50 = time.time()
     #ファイルの名前をタイムスタンプ化する
-    global filename_A
+    global timename
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    timename = timestamp.strftime("%Y%m%d%H%M%S")
     t51 = time.time()
     global t52
     global t53
@@ -244,7 +244,7 @@ def Matching_16000Hz():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
-        with open(path + csvFileName_A + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + timename + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
         #pngファイル削除
@@ -259,7 +259,7 @@ def Matching_20000Hz():
     #ファイルの名前をタイムスタンプ化する
     global filename_A
     timestamp = datetime.today()
-    csvFileName_A = timestamp.strftime("%Y%m%d%H%M%S")
+    filename_A = timestamp.strftime("%Y%m%d%H%M%S")
     t61 = time.time()
     global t62
     global t63
@@ -281,7 +281,7 @@ def Matching_20000Hz():
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
         
         #csv
-        with open(path + csvFileName_A + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
+        with open(path + filename_A + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             writer.writerows([RESULT])
         #pngファイル削除
@@ -295,6 +295,6 @@ Matching_8000Hz()
 Matching_12000Hz()
 Matching_16000Hz()
 Matching_20000Hz()
-print("finish")
+print("finish" +filename_A)
 #except KeyboardInterrupt:
 #print("FINISH!")
