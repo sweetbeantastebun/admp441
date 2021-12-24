@@ -56,7 +56,7 @@ def Matching_FS():
         min_value, max_value, min_loc, max_loc = cv2.minMaxLoc(result)
         #ファイル名、類似度を格納
         RESULT = [os.path.splitext(os.path.basename(TEMP_File))[0],round(max_value,4)]
-        #header = ["data", "TM_value"]
+        
         #csv
         with open(path + timename + "_FS" + ".csv", "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
