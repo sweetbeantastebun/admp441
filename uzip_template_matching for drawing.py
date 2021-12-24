@@ -114,7 +114,7 @@ def Unzip():
             #print("signal_spectrogram", t6-t5)
         
             #グラフ作成
-            #FullScall
+            """FullScall"""
             plt.pcolormesh(times, freqs, np.log10(Sx), cmap='jet', vmin=vmin, vmax=vmax, shading="gouraud")
             """
             #plt.ylim([0, 1000])
@@ -232,7 +232,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value4000, max_value4000, min_loc4000, max_loc4000 = cv2.minMaxLoc(result4000)
                 #ファイル名、類似度を格納
-                RESULT4000 = [os.path.basename(os.path.basename(TEMP_File4000))[0],round(max_value4000,4)]
+                RESULT4000 = [os.path.splitext(os.path.basename(TEMP_File4000))[0],round(max_value4000,4)]
         
                 #csv
                 with open(path + timename + "_4000Hz" + ".csv", "a", newline="", encoding="utf-8") as f4000:
@@ -272,7 +272,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value8000, max_value8000, min_loc8000, max_loc8000 = cv2.minMaxLoc(result8000)
                 #ファイル名、類似度を格納
-                RESULT8000 = [os.path.basename(os.path.basename(TEMP_File8000))[0],round(max_value8000,4)]
+                RESULT8000 = [os.path.splitext(os.path.basename(TEMP_File8000))[0],round(max_value8000,4)]
         
                 #csv
                 with open(path + timename + "_8000Hz" + ".csv", "a", newline="", encoding="utf-8") as f8000:
@@ -311,7 +311,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value12000, max_value12000, min_loc12000, max_loc12000 = cv2.minMaxLoc(result12000)
                 #ファイル名、類似度を格納
-                RESULT12000 = [os.path.basename(os.path.basename(TEMP_File12000))[0],round(max_value12000,4)]
+                RESULT12000 = [os.path.splitext(os.path.basename(TEMP_File12000))[0],round(max_value12000,4)]
         
                 #csv
                 with open(path + timename + "_12000Hz" + ".csv", "a", newline="", encoding="utf-8") as f12000:
@@ -350,7 +350,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value16000, max_value16000, min_loc16000, max_loc16000 = cv2.minMaxLoc(result16000)
                 #ファイル名、類似度を格納
-                RESULT16000 = [os.path.basename(os.path.basename(TEMP_File16000))[0],round(max_value16000,4)]
+                RESULT16000 = [os.path.splitext(os.path.basename(TEMP_File16000))[0],round(max_value16000,4)]
         
                 #csv
                 with open(path + timename + "_16000Hz" + ".csv", "a", newline="", encoding="utf-8") as f16000:
@@ -389,7 +389,7 @@ def Unzip():
                 #最小値、最大値、座標を取得
                 min_value20000, max_value20000, min_loc20000, max_loc20000 = cv2.minMaxLoc(result20000)
                 #ファイル名、類似度を格納
-                RESULT20000 = [os.path.basename(os.path.basename(TEMP_File20000))[0],round(max_value20000,4)]
+                RESULT20000 = [os.path.splitext(os.path.basename(TEMP_File20000))[0],round(max_value20000,4)]
         
                 #csv
                 with open(path + timename + "_20000Hz" + ".csv", "a", newline="", encoding="utf-8") as f20000:
