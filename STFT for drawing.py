@@ -137,7 +137,7 @@ def Drawing():
             plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
             name, ext = os.path.splitext(audiofile)
             ext = ".png"
-            out_path_1000Hz = os.path.join(*[path, name+"_1000Hz" + ext])
+            out_path_1000Hz = os.path.join(*[path, name + ext])
             plt.savefig(out_path_1000Hz)
             plt.close()
             shutil.move(out_path_1000Hz, path1000Hz)
@@ -153,7 +153,7 @@ def Drawing():
             plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
             name, ext = os.path.splitext(audiofile)
             ext = ".png"
-            out_path_4000Hz = os.path.join(*[path, name+"_4000Hz" + ext])
+            out_path_4000Hz = os.path.join(*[path, name + ext])
             plt.savefig(out_path_4000Hz)
             plt.close()
             shutil.move(out_path_4000Hz, path4000Hz)
@@ -169,7 +169,7 @@ def Drawing():
             plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
             name, ext = os.path.splitext(audiofile)
             ext = ".png"
-            out_path_8000Hz = os.path.join(*[path, name+"_8000Hz" + ext])
+            out_path_8000Hz = os.path.join(*[path, name + ext])
             plt.savefig(out_path_8000Hz)
             plt.close()
             shutil.move(out_path_8000Hz, path8000Hz)
@@ -185,7 +185,7 @@ def Drawing():
             plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
             name, ext = os.path.splitext(audiofile)
             ext = ".png"
-            out_path_12000Hz = os.path.join(*[path, name+"_12000Hz" + ext])
+            out_path_12000Hz = os.path.join(*[path, name + ext])
             plt.savefig(out_path_12000Hz)
             plt.close()
             shutil.move(out_path_12000Hz, path12000Hz)
@@ -201,7 +201,7 @@ def Drawing():
             plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
             name, ext = os.path.splitext(audiofile)
             ext = ".png"
-            out_path_16000Hz = os.path.join(*[path, name+"_16000Hz" + ext])
+            out_path_16000Hz = os.path.join(*[path, name + ext])
             plt.savefig(out_path_16000Hz)
             plt.close()
             shutil.move(out_path_16000Hz, path16000Hz)
@@ -217,14 +217,14 @@ def Drawing():
             plt.subplots_adjust(left=0, right=1, bottom=0, top=1)
             name, ext = os.path.splitext(audiofile)
             ext = ".png"
-            out_path_20000Hz = os.path.join(*[path, name+"_20000Hz" + ext])
+            out_path_20000Hz = os.path.join(*[path, name + ext])
             plt.savefig(out_path_20000Hz)
             plt.close()
             shutil.move(out_path_20000Hz, path20000Hz)
             t14 = time.time()
             
             #ファイル名、類似度を格納
-            RESULT = [os.path.basename(wavfile_A),round(rms_A,3)]
+            RESULT = [os.path.splitext(os.path.basename(wavfile_A))[0],round(rms_A,3)]
             #csv
             with open(path + filename_A + "_RMS" + ".csv", "a", newline="", encoding="utf-8") as f:
                 writer = csv.writer(f)
